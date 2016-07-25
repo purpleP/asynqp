@@ -1,5 +1,6 @@
 import asyncio
 import re
+from contextlib import suppress
 from . import spec
 from .exceptions import Deleted, AMQPError, InvalidExchangeName
 
