@@ -195,7 +195,7 @@ class WhenConnectionClosedOnGet(QueueContext):
 
     def when_connection_is_closed(self):
         # XXX: remove if we change behaviour to not raise
-        with supress(Exception):
+        with suppress(Exception):
             self.server.protocol.connection_lost(Exception())
         self.tick()
 
@@ -413,7 +413,7 @@ class WhenAConnectionIsClosedCancelConsuming(QueueContext, ExchangeContext):
         self.consumer = task.result()
 
     def when_connection_is_closed(self):
-        with supress(Exception):
+        with suppress(Exception):
             self.connection.protocol.connection_lost(Exception())
 
     def it_should_not_hang(self):

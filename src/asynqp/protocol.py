@@ -128,10 +128,10 @@ class HeartbeatMonitor(object):
     @asyncio.coroutine
     def wait_closed(self):
         if self.send_hb_task is not None:
-            with supress(asyncio.CancelledError):
+            with suppress(asyncio.CancelledError):
                 yield from self.send_hb_task
         if self.monitor_task is not None:
-            with supress(asyncio.CancelledError):
+            with suppress(asyncio.CancelledError):
                 yield from self.monitor_task
 
     @asyncio.coroutine

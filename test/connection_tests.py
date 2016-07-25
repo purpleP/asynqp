@@ -108,7 +108,7 @@ class WhenAConnectionThatWasClosedByTheServerReceivesAMethod(OpenConnectionConte
 
 class WhenAConnectionIsLostCloseConnection(OpenConnectionContext):
     def when_connection_is_closed(self):
-        with supress(Exception):
+        with suppress(Exception):
             self.connection.protocol.connection_lost(Exception())
 
     def it_should_not_hang(self):
@@ -124,7 +124,7 @@ class WhenServerClosesTransportWithoutConnectionClose(OpenConnectionContext):
         self.channel = self.wait_for(task)
 
     def when_server_closes_transport(self):
-        with supress(exceptions.ConnectionLostError):
+        with suppress(exceptions.ConnectionLostError):
             self.protocol.connection_lost(None)
 
     def it_should_raise_error_in_connection_methods(self):
